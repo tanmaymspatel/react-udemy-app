@@ -1,0 +1,10 @@
+.backdrop {
+    z-index: 20;
+}
+
+.model {
+    z-index: 30;
+    left: 5%;
+    top: 20vh;
+    width: 90%;
+}
