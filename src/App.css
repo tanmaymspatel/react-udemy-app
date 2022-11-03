@@ -4,6 +4,15 @@ body {
   overflow: hidden;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.main-content {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../src/assets/images/bkgImg.jpg');
+  background-size: cover;
+}
+
 
 /* .App {
   text-align: center;

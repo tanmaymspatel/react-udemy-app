@@ -1,21 +1,52 @@
+import { useContext } from "react";
 import Model from "../UI/Model";
+import CartContext from "../../store/cart-context";
+import CartItem from "./CartItem";
+
+import './Cart.css'
 
 const Cart = props => {
 
-    const cartItems = <ul className="list-group">
-        {[{ id: 'c1', name: 'Idli-sambhar', amount: 2, price: 150 }].map(item => <li className="list-group-item border-0 fs-5" key={item.id}>{item.name}</li>)}
+    const cartCtx = useContext(CartContext);
+
+    const cartAmount = `$${cartCtx.totalAmount.toFixed(2)}`
+    const hasItems = cartCtx.items.length > 0
+
+    const cartItemAddHandler = item => {
+        cartCtx.addItem({ ...item, amount: 1 });
+    };
+
+    const cartItemRemoveHndler = id => {
+        cartCtx.removeItem(id);
+    };
+
+    const cartItems = <ul className="cart-list list-group my-3 overflow-auto">
+        {cartCtx.items.map(item =>
+            <CartItem
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                amount={item.amount}
+                onAdd={cartItemAddHandler.bind(null, item)}
+                onRemove={cartItemRemoveHndler.bind(null, item.id)}
+            />
+        )}
     </ul>
+
 
     return (
         <Model onclose={props.onClose}>
+            <div className="text-end">
+                <span className="btn-close fs-4 me-4 cursor-pointer" onClick={props.onClose}></span>
+            </div>
             {cartItems}
-            <div className="d-flex justify-content-between px-3">
+            <div className="d-flex justify-content-between px-3 mt-3">
                 <p className="fw-bold fs-4">Total Amount</p>
-                <p className="fw-bold fs-4">$ 300</p>
+                <p className="fw-bold fs-4">{cartAmount}</p>
             </div>
             <div className="text-end my-2 me-3">
                 <button className="btn btn-danger" onClick={props.onClose}>Close</button>
-                <button className="btn btn-primary ms-3">Order</button>
+                <button className="btn btn-primary ms-3" disabled={!hasItems}>Order</button>
             </div>
         </Model>
     )

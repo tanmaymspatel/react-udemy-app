@@ -28,12 +28,13 @@ const meals = [
     }
 ]
 
-const AvailableMeals = props => {
+const AvailableMeals = () => {
 
     const mealList = meals.map(meal => {
         return (
             <MealItem
                 key={meal.id}
+                id={meal.id}
                 name={meal.name}
                 description={meal.description}
                 price={meal.price}
@@ -42,7 +43,7 @@ const AvailableMeals = props => {
     });
 
     return (
-        <div className="w-75 m-auto my-5">
+        <div className="w-50 m-auto my-5">
             <Card>
                 <ul className="list-group p-2">
                     {mealList}

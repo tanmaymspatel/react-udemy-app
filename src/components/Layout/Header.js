@@ -4,8 +4,8 @@ import HeaderCartBtn from './HeaderCartBtn';
 const Header = props => {
     return (
         <>
-            <header className='bg-light d-flex justify-content-between px-3 py-4 shadow-sm'>
-                <h1>React Meals</h1>
+            <header className='bg-light d-flex justify-content-between px-3 py-4 shadow-lg'>
+                <h2 className='text-dark'>Healhty Meals</h2>
                 <HeaderCartBtn onShowCart={props.onShowCart} />
             </header>
             {/* <div>

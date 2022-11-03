@@ -8,7 +8,7 @@ const Backdrop = props => {
 }
 
 const ModelOverlay = props => {
-    return <div className="model position-fixed p-3 rounded-4 shadox-lg bg-light">
+    return <div className="model position-fixed p-3 rounded-4 shadow-lg bg-light">
         <div className="content">{props.children}</div>
     </div>
 }
